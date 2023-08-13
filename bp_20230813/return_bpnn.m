@@ -3,7 +3,7 @@ function [data_del,actual_avg_error_partial,actual_avg_error_all,actual_avg_erro
     L = length(Y_train1);  
     data_db = zeros(L,1);
     
-for runs = 1:30
+for runs = 1:10
    
     k=randperm(L);
 
@@ -16,6 +16,7 @@ for runs = 1:30
 
     net = fitnet(hiddenLayerSize,trainFcn);
     net.trainParam.goal = 5e-4;
+    net.trainParam.epochs=1000; 
 
     [BPModel,BPStr] = train(net,X_train2(1:(L-150),:)',Y_train2(1:(L-150),:)');
 

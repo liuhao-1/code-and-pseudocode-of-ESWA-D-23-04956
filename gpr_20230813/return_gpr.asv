@@ -3,7 +3,7 @@ function [data_del,actual_avg_error_partial,actual_avg_error_all,actual_avg_erro
     L = length(Y_train1);   
     data_db = zeros(L,1);
     
-for runs = 1:10
+for runs = 1:1
    
       k=randperm(L);
 
@@ -11,7 +11,7 @@ for runs = 1:10
     Y_train2=Y_train1(k,:);    
 
 
-    gprMdl = fitrgp(X_train2(1:(L-150),:),Y_train2(1:(L-150),:),'Basis','constant',...
+    gprMdl = fitrgp(X_train2(1:(L-150),:),Y_train2(1:(L-150),:),'Basis','linear',...
           'FitMethod','exact','PredictMethod','exact');
     ypred_all_train = predict(gprMdl,X_train);
     ypred_testing = predict(gprMdl,X_testing);
