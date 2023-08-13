@@ -1,8 +1,5 @@
 clear
 load data.txt;
-newData = xlsread('1000newData');
-
-data = [data ; newData];
 
 for times = 1 :30
     

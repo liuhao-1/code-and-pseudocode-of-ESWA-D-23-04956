@@ -1,9 +1,6 @@
 clear
 load data1.txt;
 data = data1;
-newData = xlsread('1000newData');
-
-data = [data ; newData];
 
 data_original = data;
 cell={};
