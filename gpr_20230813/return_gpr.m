@@ -27,57 +27,12 @@ for runs = 1:10
     avg_errors_all(runs) = mean(errors_all_train);
     avg_errors_testing(runs) = mean(errors_testing);
     
-    [data_db_descend,data_db_index] = sort(errors_partial_train,'descend');
-    
-    [error_class,error_type] = dbscan(data_db_descend,3,0.00006);
-    
-    num_class = sum(size(unique(error_class))) - 1;
-    
-
-    num_class1(runs)=size(find(error_class==(error_class(1))),2);
-    
-    if num_class>1
-        for i=1:4
-            if error_class(i) == error_class(1);
-                data_del_ini(runs,i) = data_db_index(i);
-            else
-                data_del_ini(runs,i) = [0];
-            end
-        end
-    else
-        data_del_ini = [0];
-        break
-    end
-end
-
-    avg_num_class1 = mean(num_class1);
-    num_class1 = [0];
-
- 
+    [data_del_descend,data_del_index] = sort(errors_partial_train,'descend');
+    data_del = data_del_index(1:num);
     actual_avg_error_partial = mean(avg_errors_partial);
     actual_avg_error_all = mean(avg_errors_all);
     actual_avg_error_testing = mean(avg_errors_testing);
-if sum(sum(data_del_ini)) ==0
-    data_del = [0];
-else
-    freq = tabulate(data_del_ini(:));
-    freq(freq(:,2)==0,:) = [];
-    freq(freq(:,1)==0,:) = [];
-    freq(:,3)=[];
-    S_freq = size(freq)
-    
-
-    freq_descend = sortrows(freq,-2); 
-    
-    if freq_descend(2,2) >=15
-        for i = 1 : S_freq(1,1)
-            if freq_descend(i,2)>=15
-                data_del(i,:) = freq_descend(i,:);
-            end
-        end
-    else
-        data_del(1:3,:) = freq_descend(1:3,:);
-    end
+  
 end
     
 
