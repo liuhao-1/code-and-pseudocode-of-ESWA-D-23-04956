@@ -18,7 +18,7 @@ for runs = 1:10
     net.trainParam.goal = 5e-4;
     net.trainParam.epochs=1000; 
 
-    [BPModel,BPStr] = train(net,X_train2(1:(L-150),:)',Y_train2(1:(L-150),:)');
+    [BPModel,BPStr] = train(net,X_train2(1:(L-50),:)',Y_train2(1:(L-50),:)');
 
     ypred_all_train = sim(BPModel,X_train');
     ypred_testing = sim(BPModel,X_testing');
