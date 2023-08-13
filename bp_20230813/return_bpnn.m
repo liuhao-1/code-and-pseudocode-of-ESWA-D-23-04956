@@ -11,10 +11,11 @@ for runs = 1:30
     Y_train2=Y_train1(k,:); 
     
 %% other method
-    hiddenLayerSize = 5;     
+    hiddenLayerSize = 4,4,4;     
     trainFcn = 'trainlm';
 
     net = fitnet(hiddenLayerSize,trainFcn);
+    net.trainParam.goal = 5e-4;
 
     [BPModel,BPStr] = train(net,X_train2(1:(L-150),:)',Y_train2(1:(L-150),:)');
 
