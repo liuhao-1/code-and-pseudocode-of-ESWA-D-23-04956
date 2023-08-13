@@ -29,5 +29,5 @@ function [X_train1 Y_train1 errors_all errors_partial errors_testing size_del de
     errors_all = actual_avg_error_all_1;
     errors_partial = actual_avg_error_partial_1;
     errors_testing = actual_avg_error_testing_1;
-    
+end
 
